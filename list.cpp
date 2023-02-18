@@ -1,1 +1,1 @@
-// implement sorting function
+// implement merge sorting function
