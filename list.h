@@ -1,6 +1,10 @@
+#ifndef LIST_H
+#define LIST_H
 #include <iostream>
 using namespace std;
 
+/*
+DON'T FORGET TO DELETE PRINT AND ADD FUNCTION*/
 struct node
 {
     node *next;
@@ -23,8 +27,36 @@ public:
     list() { head = nullptr; };
 
     // ALL FUNCTIONS ARE RECURSIVE
-    void addtoend();
-    void msort();
+    void addtoend(int num)
+    {
+        if (head == nullptr)
+            head = new node(num);
+        else
+        {
+            node *cur = head;
+            while (cur->next != nullptr)
+                cur = cur->next;
+            node *temp = new node(num);
+            cur->next = temp;
+        }
+    }
+
+    void print()
+    {
+        if (head == nullptr)
+            return;
+        node *cur = head;
+        while (cur != nullptr)
+        {
+            cout << cur->num << " ";
+            cur = cur->next;
+        }
+    }
+
+    node *getHead() { return head; };
+    node *msort(node *);
     // for each node assign node->duplicate value and delete them(?)
     void duplicate();
 };
+
+#endif
