@@ -2,7 +2,7 @@
 #include <fstream>
 #include <array>
 #include <string>
-#include "list.h"
+#include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
 
@@ -29,7 +29,7 @@ string decode(string input) {
     int size = input.length();
 
     // finds "()"
-    int start, end = string::npos;
+    int start, end = -1;
     start = input.find_first_of('(');
     end = input.find_last_of(')');
     string _out = input.substr(0, start) 
