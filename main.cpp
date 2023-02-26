@@ -23,22 +23,22 @@ int main(int argc, char *argv[])
     ifstream inputfile("input2.txt");
 
     list test;
-    test.addtoend(2);
-    test.addtoend(4);
+
+    test.addtoend(3);
     test.addtoend(6);
     test.addtoend(1);
-    test.addtoend(3);
+
     test.addtoend(5);
+    test.addtoend(2);
+
+    test.addtoend(4);
 
     test.print();
 
     cout << endl;
 
     node *head = test.getHead();
-    // NOT WORKING
-    node *new_head = test.msort(head);
+    test.msort(head);
 
-    cout << new_head->num << endl;
-
-    test.print();
+    // test.print();
 }

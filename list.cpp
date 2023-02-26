@@ -1,13 +1,12 @@
 #include "list.h"
 #include <iostream>
 using namespace std;
-// implement recursive selection sort
 
 node *findMid(node *fast, node *slow)
 {
-    if (fast == nullptr || fast->next == nullptr)
+    if (fast->next == nullptr || fast->next->next == nullptr)
     {
-        cout << slow->num;
+        // cout << slow->num << " ";
         return slow;
     }
 
@@ -38,24 +37,31 @@ node *merge(node *list1, node *list2)
             list3->next = merge(list1, list2->next);
         }
     }
+
+    node *cur = list3;
+    while (cur != nullptr)
+    {
+        cout << cur->num << " ";
+        cur = cur->next;
+    }
+    cout << endl;
     return list3;
 }
 
-node *list::msort(node *head_ref)
+void list::msort(node *head_ref)
 {
     if (head_ref == nullptr || head_ref->next == nullptr)
-        return nullptr;
+        return;
 
     node *left = head_ref;
-    node *mid = findMid(left, left);
+    node *mid = findMid(head_ref, head_ref);
     // splitting list into two
     node *right = mid->next;
     mid->next = nullptr;
 
     // sorting both halves
-    node *l = msort(left);
-    node *r = msort(right);
+    msort(left);
+    msort(right);
 
-    node *new_head = merge(l, r);
-    return new_head;
+    head_ref = merge(left, right);
 }
