@@ -1,30 +1,28 @@
 #include <iostream>
 using namespace std;
 
-struct node
-{
+struct node {
     node *next;
     int num;
-    bool duplicate;
-    node();
-    node(int n)
-    {
-        num = n;
-        next = nullptr;
-    }
+    char c;
+    bool dup;
+    node() {};
+    node(int n){num=n; next=nullptr; c=' ';}
 };
 
-class list
-{
+
+class list{
 private:
     node *head;
 
 public:
-    list() { head = nullptr; };
-
-    // ALL FUNCTIONS ARE RECURSIVE
-    void addtoend();
-    void msort();
-    // for each node assign node->duplicate value and delete them(?)
-    void duplicate();
+	//ALL FUNCTIONS ARE RECURSIVE
+    list() {head = nullptr;};
+	void print(node* head, ofstream &output, bool answer);
+	void addtoend();
+	bool duplicate(node *head);
+    bool push(char c);
+    char pop();
+    node* peek();
+    bool isEmpty () {return head == nullptr;}
 };
