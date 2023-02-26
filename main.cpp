@@ -6,6 +6,7 @@
 #include "ArgumentManager.h"
 using namespace std;
 
+
 string decode(string input);
 string dec (string input);
 
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]){
     // delete when done
     ifstream inputfile("input2.txt");
 }
+
 
 
 string decode(string input) {
