@@ -2,10 +2,9 @@
 using namespace std;
 
 struct node {
-    node* next;
+    node *next;
     int num;
     char c;
-
     node() {};
     node(int n){num=n; next=nullptr; c=' ';}
 };
@@ -27,9 +26,25 @@ struct node {
 
 
 
+// class list{
+// private:
+// 	node* head;
+// public:
+// 	//ALL FUNCTIONS ARE RECURSIVE
+//  list();
+// 	void print(node* head, ofstream &output, bool answer);
+// 	void addtoend();
+// 	bool duplicate();
+// 	bool push(char);
+//  char pop();
+// 	node* peek();
+// };
+
+
 class list{
 private:
-	node* head;
+    node *head;
+
 public:
 	//ALL FUNCTIONS ARE RECURSIVE
     list() {head = nullptr;};

@@ -4,6 +4,7 @@
 #include <string>
 #include "list.h"
 #include "ArgumentManager.h"
+#include "list.h"
 using namespace std;
 
 string decode(string input);
@@ -15,10 +16,10 @@ int main(int argc, char *argv[]){
     const string input = an.get("input");
     const string command = an.get("command");
     const string output = an.get("output");
-    //ifstream inputfile(input);
+    // ifstream inputfile(input);
     ofstream outfile(output);
 
-    //delete when done
+    // delete when done
     ifstream inputfile("input2.txt");
 }
 
