@@ -20,4 +20,14 @@ int main(int argc, char *argv[])
 
     // delete when done
     ifstream inputfile("input2.txt");
+    
+    string line;
+    list bar;
+    
+    while(getline(inputfile,line)){
+        if(line!="" && line[0]!='B'){
+          bar.addtoend(bar.decode(line));
+        }
+    }
+    
 }
