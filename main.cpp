@@ -4,7 +4,6 @@
 #include <string>
 #include "list.h"
 #include "ArgumentManager.h"
-#include "list.h"
 using namespace std;
 
 string decode(string input);
