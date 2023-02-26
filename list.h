@@ -54,7 +54,8 @@ public:
     }
 
     node *getHead() { return head; };
-    void msort(node *);
+    void msort(node **);
+    node *merge(node *, node *);
     // for each node assign node->duplicate value and delete them(?)
     void duplicate();
 };

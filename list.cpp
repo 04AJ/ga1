@@ -4,9 +4,8 @@ using namespace std;
 
 node *findMid(node *fast, node *slow)
 {
-    if (fast->next == nullptr || fast->next->next == nullptr)
+    if (fast == nullptr || fast->next == nullptr)
     {
-        // cout << slow->num << " ";
         return slow;
     }
 
@@ -14,7 +13,7 @@ node *findMid(node *fast, node *slow)
         return findMid(fast->next->next, slow->next);
 }
 
-node *merge(node *list1, node *list2)
+node *list::merge(node *list1, node *list2)
 {
     node *list3 = nullptr;
     if (list1 == nullptr && list2 == nullptr)
@@ -31,37 +30,41 @@ node *merge(node *list1, node *list2)
             list3 = list1;
             list3->next = merge(list1->next, list2);
         }
-        if (list2->num < list1->num)
+        else if (list2->num < list1->num)
         {
             list3 = list2;
             list3->next = merge(list1, list2->next);
         }
     }
-
-    node *cur = list3;
-    while (cur != nullptr)
-    {
-        cout << cur->num << " ";
-        cur = cur->next;
-    }
-    cout << endl;
+    // important!
+    head = list3;
     return list3;
 }
 
-void list::msort(node *head_ref)
+/*
+HOW TO CALL MSORT ON A LIST:
+node *head = test.getHead();
+    test.msort(&head);
+
+- note you are passing in a reference to the pointer head (pointer of pointers)
+*/
+
+void list::msort(node **head_ref)
 {
-    if (head_ref == nullptr || head_ref->next == nullptr)
+    node *_head = *head_ref;
+    if (_head == nullptr || _head->next == nullptr)
         return;
 
-    node *left = head_ref;
-    node *mid = findMid(head_ref, head_ref);
+    node *left = _head;
+
+    node *mid = findMid(_head->next, _head);
     // splitting list into two
     node *right = mid->next;
     mid->next = nullptr;
 
-    // sorting both halves
-    msort(left);
-    msort(right);
+    // cotinues splitting list until individual nodes - merges through recursive stack
+    msort(&left);
+    msort(&right);
 
-    head_ref = merge(left, right);
+    *head_ref = merge(left, right);
 }

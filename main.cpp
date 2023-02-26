@@ -24,21 +24,18 @@ int main(int argc, char *argv[])
 
     list test;
 
-    test.addtoend(3);
-    test.addtoend(6);
-    test.addtoend(1);
-
-    test.addtoend(5);
-    test.addtoend(2);
-
-    test.addtoend(4);
+    test.addtoend(3120);
+    test.addtoend(1010);
+    test.addtoend(221);
+    test.addtoend(202);
+    test.addtoend(1234);
 
     test.print();
 
     cout << endl;
 
     node *head = test.getHead();
-    test.msort(head);
+    test.msort(&head);
 
-    // test.print();
+    test.print();
 }
