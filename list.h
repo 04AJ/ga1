@@ -3,13 +3,11 @@
 #include <iostream>
 using namespace std;
 
-/*
-DON'T FORGET TO DELETE PRINT AND ADD FUNCTION*/
 struct node
 {
     node *next;
     int num;
-    bool duplicate;
+    bool dup;
     node();
     node(int n)
     {
@@ -31,7 +29,7 @@ public:
     void msort(node **);
     node *merge(node *, node *);
     // for each node assign node->duplicate value and delete them(?)
-    void duplicate();
+    bool duplicate(node *);
 };
 
 #endif
