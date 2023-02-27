@@ -3,8 +3,7 @@
 #include <iostream>
 using namespace std;
 
-struct node
-{
+struct node {
     node *next;
     bool dup;
     int num;
@@ -19,8 +18,8 @@ struct node
     }
 };
 
-class list
-{
+
+class list{
 private:
     node *head;
 

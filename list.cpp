@@ -9,6 +9,7 @@ bool list::push(char c)
     return true;
 }
 
+
 char list::pop()
 {
     if (head != nullptr)
@@ -21,6 +22,22 @@ char list::pop()
     }
     return ' ';
 }
+
+
+
+//make sure dup is set to false by default
+bool list::duplicate(node *head){
+  if(head == nullptr || head->next == nullptr){
+    return false;
+  }
+  if(head->num == head->next->num){
+    node *temp = head->next;
+    head->dup = true;
+    head->next = head->next->next;
+    delete temp;
+  }
+  return duplicate(head->next);
+
 
 node *list::peek()
 {
