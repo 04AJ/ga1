@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     ofstream outfile(output);
 
     // delete when done
-    ifstream inputfile("input2.txt");
+    ifstream inputfile("input4.txt");
 
     string line;
     list bar;
@@ -34,9 +34,16 @@ int main(int argc, char *argv[])
         {
             bar.addtoend(stoi(line));
         }
-
-        node *head = bar.getHead();
-        bar.msort(&head);
-
-        bar.print();
     }
+
+    cout << "Original list created by input3" << endl;
+    bar.print();
+
+    node *head = bar.getHead();
+    bar.msort(&head);
+
+    cout << endl;
+    cout << "Sorted list" << endl;
+
+    bar.print();
+}

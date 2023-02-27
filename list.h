@@ -51,7 +51,7 @@ public:
         node *cur = head;
         while (cur != nullptr)
         {
-            cout << cur->num << " ";
+            cout << cur->num << endl;
             cur = cur->next;
         }
     }
