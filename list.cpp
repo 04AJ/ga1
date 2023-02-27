@@ -12,11 +12,13 @@ node *list::addtoend(node *head, string bar)
     return head;
 }
 
-string list::print(node *head) {
+string list::print(node *head)
+{
     if (head == nullptr)
         return "";
     string tmp = "";
-    if (head->id != ""){
+    if (head->id != "")
+    {
         tmp += head->id;
         if (head->next != nullptr)
             tmp += "\n";
@@ -137,12 +139,12 @@ node *list::merge(node *list1, node *list2)
     else
     {
 
-        if (list1->id <= list2->id)
+        if (list1->num <= list2->num)
         {
             list3 = list1;
             list3->next = merge(list1->next, list2);
         }
-        else if (list2->id < list1->id)
+        else if (list2->num < list1->num)
         {
             list3 = list2;
             list3->next = merge(list1, list2->next);

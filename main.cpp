@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     // ofstream outfile(output);
 
     // delete when done
-    ifstream inputfile("input3.txt");
+    ifstream inputfile("input2.txt");
     ofstream outfile("output.txt");
 
     string line;
@@ -42,11 +42,6 @@ int main(int argc, char *argv[])
 
     bar.msort(&good);
     dupbar.msort(&bad);
-
-    // cout << "Guilty List" << endl;
-    // cout << dupbar.print(bad) << endl;
-    // cout << "Innocent List" << endl;
-    // cout << bar.print(good) << endl;
 
     bar.duplicate(good);
     dupbar.duplicate(bad);

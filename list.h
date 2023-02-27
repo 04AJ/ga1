@@ -8,11 +8,13 @@ struct node
     node *next;
     bool dup;
     string id;
+    int num;
     char c;
     node(){};
     node(string n)
     {
         id = n;
+        num = stoi(n);
         dup = false;
         next = nullptr;
         c = ' ';
