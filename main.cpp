@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     bad=dupbar.checkbool(bad,false);
     good=bar.checkbool(good,true);
     
-    if(bad!=nullptr && bad->num!=""){
+    if(bad!=nullptr ){
       cout<<"Guilty:"<<endl;
       bar.print(bad);
     }
