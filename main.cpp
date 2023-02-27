@@ -23,11 +23,13 @@ int main(int argc, char *argv[])
     
     string line;
     list bar;
+    node *n=nullptr;
     
     while(getline(inputfile,line)){
         if(line!="" && line[0]!='B'){
-          bar.addtoend(bar.decode(line));
+          n=bar.addtoend(n,bar.decode(line));
         }
     }
     
+    bar.print(n);
 }
