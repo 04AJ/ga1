@@ -5,7 +5,7 @@ struct node
 {
     node *next;
     int num;
-    bool duplicate;
+    bool dup;
     node();
     node(int n)
     {
@@ -27,6 +27,7 @@ public:
     void msort();
     // for each node assign node->duplicate value and delete them(?)
     void duplicate();
+    node *checkbool(node* head,bool b);
     node *newNode(string data);
     node *addtoend(node *head,string bar);
     void print(node *head );
