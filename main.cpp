@@ -2,6 +2,7 @@
 #include <fstream>
 #include <array>
 #include <string>
+#include <algorithm>
 #include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
@@ -29,19 +30,23 @@ int main(int argc, char *argv[])
 
     while (getline(inputfile, line))
     {
+        line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
         if (line != "" && line[0] != 'B')
         {
-            cout << decode(line) << endl;
+            // cout << stoi(decode(line)) << endl;
             good = bar.addtoend(good, decode(line));
             bad = dupbar.addtoend(bad, decode(line));
         }
     }
 
-    node *head = bar.getHead();
     bar.msort(&good);
-
-    head = dupbar.getHead();
     dupbar.msort(&bad);
+
+    // cout << "Guilty List" << endl;
+    // cout << dupbar.print(bad) << endl;
+    // cout << "Innocent List" << endl;
+    // cout << bar.print(good) << endl;
 
     bar.duplicate(good);
     dupbar.duplicate(bad);
@@ -55,7 +60,7 @@ int main(int argc, char *argv[])
     if (guilty)
     {
         outfile << "Guilty:" << endl;
-        outfile << bar.print(bad);
+        outfile << dupbar.print(bad);
     }
 
     if (innocent)
