@@ -27,16 +27,22 @@ public:
     list() { head = nullptr; };
 
     // ALL FUNCTIONS ARE RECURSIVE
+
     node *getHead() { return head; };
     void msort(node **);
     node *merge(node *, node *);
     bool duplicate(node *);
     void print(node *head, ofstream &output, bool answer);
-    node *addtoend();
+       node *checkbool(node* head,bool b);
+    node *newNode(string data);
+    node *addtoend(node *head,string bar);
+      void addtoend();
+       void print(node *head );
     bool push(char c);
     char pop();
     node *peek();
     bool isEmpty() { return head == nullptr; }
+
 };
 
 #endif
