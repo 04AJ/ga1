@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <array>
 #include <string>
 #include "ArgumentManager.h"
@@ -21,4 +22,21 @@ int main(int argc, char *argv[])
 
     // delete when done
     ifstream inputfile("input2.txt");
-}
+
+    string line;
+    list bar;
+
+    while (getline(inputfile, line))
+    {
+        line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
+        if (line != "" && line[0] != 'B')
+        {
+            bar.addtoend(stoi(line));
+        }
+
+        node *head = bar.getHead();
+        bar.msort(&head);
+
+        bar.print();
+    }
