@@ -27,4 +27,8 @@ public:
     void msort();
     // for each node assign node->duplicate value and delete them(?)
     void duplicate();
+    node *newNode(string data);
+    node *addtoend(node *head,string bar);
+    void print(node *head );
+    
 };
