@@ -12,15 +12,16 @@ node *list::addtoend(node *head, string bar)
     return head;
 }
 
-void list::print(node *head)
-{
+string list::print(node *head) {
     if (head == nullptr)
-        return;
-
-    if (head->id != "")
-        cout << head->id << endl;
-
-    print(head->next);
+        return "";
+    string tmp = "";
+    if (head->id != ""){
+        tmp += head->id;
+        if (head->next != nullptr)
+            tmp += "\n";
+    }
+    return tmp + print(head->next);
 }
 
 node *list::checkbool(node *head, bool b)

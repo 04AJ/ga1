@@ -35,10 +35,9 @@ public:
     void duplicate(node *);
     bool innocent(node *);
     bool guilty(node *);
-    void print(node *head, ofstream &output, bool answer);
+    string print(node *head);
     node *checkbool(node *head, bool b);
     node *addtoend(node *head, string bar);
-    void print(node *head);
     bool push(char c);
     char pop();
     node *peek();

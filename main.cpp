@@ -9,17 +9,16 @@ using namespace std;
 string decode(string input);
 string dec(string input);
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     ArgumentManager an(argc, argv);
     const string input = an.get("input");
-    const string command = an.get("command");
     const string output = an.get("output");
     // ifstream inputfile(input);
-    ofstream outfile(output);
+    // ofstream outfile(output);
 
     // delete when done
-    ifstream inputfile("input2.txt");
+    ifstream inputfile("input3.txt");
+    ofstream outfile("output.txt");
 
     string line;
     list bar;
@@ -52,44 +51,46 @@ int main(int argc, char *argv[])
     bad = dupbar.checkbool(bad, false);
     good = bar.checkbool(good, true);
 
-    if (guilty)
-    {
-        cout << "Guilty:" << endl;
-        bar.print(bad);
+    if (guilty) {
+        outfile << "Guilty:" << endl;
+        outfile << bar.print(bad);
     }
 
-    if (innocent)
-    {
-        cout << "Innocent:" << endl;
-        bar.print(good);
+    if (innocent) {
+        outfile << "Innocent:" << endl;
+        outfile << bar.print(good);
     }
+
+    inputfile.close();
+    outfile.close();
+    return 0;
 }
 
-string decode(string input)
-{
+string decode(string input) {
     int size = input.length();
 
     // finds "()"
     int start, end = -1;
     start = input.find_first_of('(');
     end = input.find_last_of(')');
-    string _out = input.substr(0, start) + dec(input.substr(start + 1, end - start - 1)) + input.substr(end + 1, input.length() - 1);
+    string _out = input.substr(0, start) + 
+                    dec(input.substr(start + 1, end - start - 1)) + 
+                    input.substr(end + 1, input.length() - 1);
     // cout << "Final: " << _out << endl;
     return _out;
 }
 
 // DO NOT CALL THIS FUNCTION!!! CALL "decode()"!!!
-string dec(string input)
-{
+string dec(string input) {
     list *stack = new list();
 
     // finds "()"
-    int start, end = string::npos;
+    int start, end = -1;
     start = input.find_first_of('(');
     end = input.find_last_of(')');
 
     // checks if the string contains "()" if so, calls dec
-    if (start != string::npos && end != string::npos)
+    if (start != -1 && end != -1)
     {
         input = input.substr(0, start) + dec(input.substr(start + 1, end - start - 1)) + input.substr(end + 1, input.length() - 1);
     }
