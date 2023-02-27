@@ -33,7 +33,7 @@ public:
     node *merge(node *, node *);
     bool duplicate(node *);
     void print(node *head, ofstream &output, bool answer);
-    void addtoend();
+    node *addtoend();
     bool push(char c);
     char pop();
     node *peek();
