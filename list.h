@@ -1,21 +1,25 @@
+#ifndef LIST_H
+#define LIST_H
 #include <iostream>
 using namespace std;
 
-struct node
-{
+struct node {
     node *next;
-    int num;
     bool dup;
-    node();
+    int num;
+    char c;
+    node(){};
     node(int n)
     {
         num = n;
+        dup = false;
         next = nullptr;
+        c = ' ';
     }
 };
 
-class list
-{
+
+class list{
 private:
     node *head;
 
@@ -23,13 +27,22 @@ public:
     list() { head = nullptr; };
 
     // ALL FUNCTIONS ARE RECURSIVE
-    void addtoend();
-    void msort();
-    // for each node assign node->duplicate value and delete them(?)
-    void duplicate();
-    node *checkbool(node* head,bool b);
+
+    node *getHead() { return head; };
+    void msort(node **);
+    node *merge(node *, node *);
+    bool duplicate(node *);
+    void print(node *head, ofstream &output, bool answer);
+       node *checkbool(node* head,bool b);
     node *newNode(string data);
     node *addtoend(node *head,string bar);
-    void print(node *head );
-    
+      void addtoend();
+       void print(node *head );
+    bool push(char c);
+    char pop();
+    node *peek();
+    bool isEmpty() { return head == nullptr; }
+
 };
+
+#endif
