@@ -31,5 +31,8 @@ int main(int argc, char *argv[])
         }
     }
     
-    bar.print(n);
+    if(n!=nullptr){
+      cout<<"Innocent:"<<endl;
+      bar.print(n);
+    }
 }
