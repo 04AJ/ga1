@@ -1,0 +1,1 @@
+  cout << decode(line) << endl;
