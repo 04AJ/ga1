@@ -6,7 +6,7 @@ node *list::newNode(string data){
       return new_node;
     }
 
-    node *list::addtoend(node* head,string bar){
+node *list::addtoend(node* head,string bar){
       
     if (head == nullptr) 
       return newNode(bar);
@@ -15,9 +15,7 @@ node *list::newNode(string data){
       return head;
     }
 
-  
-
-    void list::print(node *head ){
+void list::print(node *head ){
        if(head == nullptr)
          return;
        
