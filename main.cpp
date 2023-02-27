@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     {
         if (line != "" && line[0] != 'B')
         {
-            // cout << decode(line) << endl;
+            cout << decode(line) << endl;
             good = bar.addtoend(good, decode(line));
             bad = dupbar.addtoend(bad, decode(line));
         }
@@ -73,6 +73,8 @@ string decode(string input) {
     int start, end = -1;
     start = input.find_first_of('(');
     end = input.find_last_of(')');
+    if (start == -1 && end == -1)
+     return input;
     string _out = input.substr(0, start) + 
                     dec(input.substr(start + 1, end - start - 1)) + 
                     input.substr(end + 1, input.length() - 1);
