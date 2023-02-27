@@ -23,16 +23,21 @@ int main(int argc, char *argv[])
     
     string line;
     list bar;
-    node *n=nullptr;
+    node *good=nullptr;
+    node *bad=nullptr;
     
     while(getline(inputfile,line)){
         if(line!="" && line[0]!='B'){
-          n=bar.addtoend(n,bar.decode(line));
+          good=bar.addtoend(good,bar.decode(line));
         }
     }
+    if(x!=nullptr){
+      cout<<"Guilty:"<<endl;
+      bar.print(bad);
+    }
     
-    if(n!=nullptr){
+    if(good!=nullptr){
       cout<<"Innocent:"<<endl;
-      bar.print(n);
+      bar.print(good);
     }
 }
