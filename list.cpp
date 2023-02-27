@@ -24,3 +24,16 @@ void list::print(node *head ){
        print(head->next);
        
     }
+
+node *list::checkbool(node* head,bool b){
+    if (head == nullptr){return nullptr;}
+      
+    
+    if(head->dup == b){
+      //temp=addtoend(temp, head->num);
+      head->num="";
+      }
+    
+      checkbool(head->next,b);
+     return head;
+    }
