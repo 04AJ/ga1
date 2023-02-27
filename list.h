@@ -7,14 +7,12 @@ struct node
 {
     node *next;
     bool dup;
-    string num;
-    string snum;
+    string id;
     char c;
     node(){};
     node(string n)
     {
-        num = n;
-        snum = n;
+        id = n;
         dup = false;
         next = nullptr;
         c = ' ';

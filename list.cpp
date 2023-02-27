@@ -17,8 +17,8 @@ void list::print(node *head)
     if (head == nullptr)
         return;
 
-    if (head->snum != "")
-        cout << head->snum << endl;
+    if (head->id != "")
+        cout << head->id << endl;
 
     print(head->next);
 }
@@ -32,7 +32,7 @@ node *list::checkbool(node *head, bool b)
 
     if (head->dup == b)
     {
-        head->snum = "";
+        head->id = "";
     }
 
     checkbool(head->next, b);
@@ -73,7 +73,7 @@ void list::duplicate(node *head)
     {
         return;
     }
-    if (head->num == head->next->num)
+    if (head->id == head->next->id)
     {
         node *temp = head->next;
         head->dup = true;
@@ -136,12 +136,12 @@ node *list::merge(node *list1, node *list2)
     else
     {
 
-        if (list1->num <= list2->num)
+        if (list1->id <= list2->id)
         {
             list3 = list1;
             list3->next = merge(list1->next, list2);
         }
-        else if (list2->num < list1->num)
+        else if (list2->id < list1->id)
         {
             list3 = list2;
             list3->next = merge(list1, list2->next);

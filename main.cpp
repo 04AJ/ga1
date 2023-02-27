@@ -2,7 +2,6 @@
 #include <fstream>
 #include <array>
 #include <string>
-#include "list.h"
 #include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
