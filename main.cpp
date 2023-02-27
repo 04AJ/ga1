@@ -3,7 +3,7 @@
 #include <array>
 #include <string>
 #include <algorithm>
-#include "list.cpp"
+#include "list.h"
 #include "ArgumentManager.h"
 using namespace std;
 
@@ -15,12 +15,12 @@ int main(int argc, char *argv[])
     ArgumentManager an(argc, argv);
     const string input = an.get("input");
     const string output = an.get("output");
-    // ifstream inputfile(input);
-    // ofstream outfile(output);
+    ifstream inputfile(input);
+    ofstream outfile(output);
 
     // delete when done
-    ifstream inputfile("input2.txt");
-    ofstream outfile("output.txt");
+    // ifstream inputfile("input2.txt");
+    // ofstream outfile("output.txt");
 
     string line;
     list bar;
