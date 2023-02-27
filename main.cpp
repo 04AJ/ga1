@@ -29,14 +29,22 @@ int main(int argc, char *argv[])
     while(getline(inputfile,line)){
         if(line!="" && line[0]!='B'){
           good=bar.addtoend(good,bar.decode(line));
+          bad=dupbar.addtoend(bad,line);
         }
     }
-    if(bad!=nullptr){
+    
+    bar.duplicate(good);
+    dupbar.duplicate(bad);
+    
+    bad=dupbar.checkbool(bad,false);
+    good=bar.checkbool(good,true);
+    
+    if(bad!=nullptr && bad->num!=""){
       cout<<"Guilty:"<<endl;
       bar.print(bad);
     }
     
-    if(good!=nullptr){
+    if(good!=nullptr && good->num!=""){
       cout<<"Innocent:"<<endl;
       bar.print(good);
     }
