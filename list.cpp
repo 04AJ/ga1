@@ -19,7 +19,6 @@ node *list::newNode(string data){
 
     void list::print(node *head ){
        if(head == nullptr)
-         //cout<<"yep"<<endl;
          return;
        
        cout << head->num <<endl;
