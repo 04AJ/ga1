@@ -3,10 +3,10 @@ using namespace std;
 
 struct node {
     node *next;
-    int num;
+    string id;
     char c;
     node() {};
-    node(int n){num=n; next=nullptr; c=' ';}
+    node(string identification){id = identification; next=nullptr; c=' ';}
 };
 
 
