@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
           good=bar.addtoend(good,bar.decode(line));
         }
     }
-    if(x!=nullptr){
+    if(bad!=nullptr){
       cout<<"Guilty:"<<endl;
       bar.print(bad);
     }
