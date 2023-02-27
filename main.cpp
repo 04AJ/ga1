@@ -2,9 +2,9 @@
 #include <fstream>
 #include <array>
 #include <string>
+#include "list.h"
 #include "list.cpp"
 #include "ArgumentManager.h"
-#include "list.cpp"
 using namespace std;
 
 string decode(string input);
@@ -21,33 +21,48 @@ int main(int argc, char *argv[])
 
     // delete when done
     ifstream inputfile("input2.txt");
-    
+
     string line;
     list bar;
-    node *good=nullptr;
-    node *bad=nullptr;
-    
-    while(getline(inputfile,line)){
-        if(line!="" && line[0]!='B'){
-          good=bar.addtoend(good,bar.decode(line));
-          bad=dupbar.addtoend(bad,line);
+    list dupbar;
+    node *good = nullptr;
+    node *bad = nullptr;
+
+    while (getline(inputfile, line))
+    {
+        if (line != "" && line[0] != 'B')
+        {
+            // cout << decode(line) << endl;
+            good = bar.addtoend(good, decode(line));
+            bad = dupbar.addtoend(bad, decode(line));
         }
     }
-    
+
+    node *head = bar.getHead();
+    bar.msort(&good);
+
+    head = dupbar.getHead();
+    dupbar.msort(&bad);
+
     bar.duplicate(good);
     dupbar.duplicate(bad);
-    
-    bad=dupbar.checkbool(bad,false);
-    good=bar.checkbool(good,true);
-    
-    if(bad!=nullptr ){
-      cout<<"Guilty:"<<endl;
-      bar.print(bad);
+
+    bool innocent = bar.innocent(good);
+    bool guilty = dupbar.guilty(bad);
+
+    bad = dupbar.checkbool(bad, false);
+    good = bar.checkbool(good, true);
+
+    if (guilty)
+    {
+        cout << "Guilty:" << endl;
+        bar.print(bad);
     }
-    
-    if(good!=nullptr ){
-      cout<<"Innocent:"<<endl;
-      bar.print(good);
+
+    if (innocent)
+    {
+        cout << "Innocent:" << endl;
+        bar.print(good);
     }
 }
 
@@ -60,7 +75,7 @@ string decode(string input)
     start = input.find_first_of('(');
     end = input.find_last_of(')');
     string _out = input.substr(0, start) + dec(input.substr(start + 1, end - start - 1)) + input.substr(end + 1, input.length() - 1);
-    cout << "Final: " << _out << endl;
+    // cout << "Final: " << _out << endl;
     return _out;
 }
 

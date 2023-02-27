@@ -1,44 +1,43 @@
-
 #include "list.h"
+#include <iostream>
+using namespace std;
 
-node *list::newNode(string data){
-      node *new_node = new node;
-      new_node->num = data;
-      new_node->next = nullptr;
-      return new_node;
-    }
+node *list::addtoend(node *head, string bar)
+{
 
-node *list::addtoend(node* head,string bar){
-      
-    if (head == nullptr) 
-      return newNode(bar);
+    if (head == nullptr)
+        return new node(bar);
     else
-      head->next=addtoend(head->next, bar);
-      return head;
+        head->next = addtoend(head->next, bar);
+    return head;
+}
+
+void list::print(node *head)
+{
+    if (head == nullptr)
+        return;
+
+    if (head->snum != "")
+        cout << head->snum << endl;
+
+    print(head->next);
+}
+
+node *list::checkbool(node *head, bool b)
+{
+    if (head == nullptr)
+    {
+        return nullptr;
     }
 
-void list::print(node *head ){
-       if(head == nullptr)
-         return;
-       
-       cout << head->num <<endl;
-         
-       print(head->next);
-       
+    if (head->dup == b)
+    {
+        head->snum = "";
     }
 
-node *list::checkbool(node* head,bool b){
-    if (head == nullptr){return nullptr;}
-      
-    
-    if(head->dup == b){
-      //temp=addtoend(temp, head->num);
-      head->num="";
-      }
-    
-      checkbool(head->next,b);
-     return head;
-    }
+    checkbool(head->next, b);
+    return head;
+}
 
 bool list::push(char c)
 {
@@ -62,12 +61,17 @@ char list::pop()
     return ' ';
 }
 
+node *list::peek()
+{
+    return head;
+}
+
 // make sure dup is set to false by default
-bool list::duplicate(node *head)
+void list::duplicate(node *head)
 {
     if (head == nullptr || head->next == nullptr)
     {
-        return false;
+        return;
     }
     if (head->num == head->next->num)
     {
@@ -76,12 +80,37 @@ bool list::duplicate(node *head)
         head->next = head->next->next;
         delete temp;
     }
-    return duplicate(head->next);
+    duplicate(head->next);
 }
 
-node *list::peek()
+bool list::innocent(node *head)
 {
-    return head;
+
+    if (head == nullptr)
+    {
+        return false;
+    }
+    if (head->dup == false)
+    {
+        return true;
+    }
+
+    return innocent(head->next);
+}
+
+bool list::guilty(node *head)
+{
+
+    if (head == nullptr)
+    {
+        return false;
+    }
+    if (head->dup == true)
+    {
+        return true;
+    }
+
+    return guilty(head->next);
 }
 
 node *findMid(node *fast, node *slow)
@@ -150,4 +179,3 @@ void list::msort(node **head_ref)
 
     *head_ref = merge(left, right);
 }
-
