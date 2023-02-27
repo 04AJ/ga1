@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
       bar.print(bad);
     }
     
-    if(good!=nullptr && good->num!=""){
+    if(good!=nullptr ){
       cout<<"Innocent:"<<endl;
       bar.print(good);
     }
