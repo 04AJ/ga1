@@ -8,7 +8,6 @@
 using namespace std;
 
 string decode(string input);
-// string dec(string input);
 
 int main(int argc, char *argv[])
 {
@@ -17,10 +16,6 @@ int main(int argc, char *argv[])
     const string output = an.get("output");
     ifstream inputfile(input);
     ofstream outfile(output);
-
-    // delete when done
-    // ifstream inputfile("input9.txt");
-    // ofstream outfile("output.txt");
 
     string line;
     list bar;
@@ -69,25 +64,30 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-string decode (string input) {
+string decode(string input)
+{
     int size = input.length();
     list *stack = new list();
     list *line = new list();
     string out = "";
     int openp = 0;
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++)
+    {
         if (input[i] == '(')
-                openp ++;
+            openp++;
         if (openp <= 0)
             out += input[i];
-        else if (input[i] == ')') {
-            openp --;
-            if (openp <= 0) {
+        else if (input[i] == ')')
+        {
+            openp--;
+            if (openp <= 0)
+            {
                 while (!stack->isEmpty() && stack->peek()->c != '(')
                     out += stack->pop();
             }
-            else{
+            else
+            {
                 while (stack->peek()->c != '(')
                     line->addend(stack->pop());
                 stack->pop();
@@ -95,10 +95,10 @@ string decode (string input) {
                     stack->push(line->pop());
             }
         }
-        else {
+        else
+        {
             stack->push(input[i]);
         }
     }
     return out;
 }
-

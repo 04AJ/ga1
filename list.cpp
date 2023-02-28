@@ -11,21 +11,25 @@ node *list::addtoend(node *head, string bar)
     return head;
 }
 
-void adde(node *head, char c){
-    if (head->next == nullptr){
+void adde(node *head, char c)
+{
+    if (head->next == nullptr)
+    {
         node *tmp = new node();
         tmp->c = c;
         tmp->next = nullptr;
         head->next = tmp;
-    }        
+    }
     else
         adde(head->next, c);
 }
 
-void list::addend(char c) {
+void list::addend(char c)
+{
     if (isEmpty())
         push(c);
-    else {
+    else
+    {
         adde(head, c);
     }
 }

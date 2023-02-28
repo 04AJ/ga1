@@ -29,8 +29,6 @@ private:
 public:
     list() { head = nullptr; };
 
-    // ALL FUNCTIONS ARE RECURSIVE
-
     node *getHead() { return head; };
     void msort(node **);
     node *merge(node *, node *);
