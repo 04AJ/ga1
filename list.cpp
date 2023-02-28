@@ -69,21 +69,39 @@ node *list::peek()
     return head;
 }
 
-// make sure dup is set to false by default
 void list::duplicate(node *head)
 {
     if (head == nullptr || head->next == nullptr)
     {
         return;
     }
-    if (head->id == head->next->id)
+    if (head->dup == true)
+    {
+        if (head->id == head->next->id)
+        {
+            node *temp = head->next;
+            head->dup = true;
+            head->next = head->next->next;
+            delete temp;
+            duplicate(head);
+        }
+        else
+        {
+            duplicate(head->next);
+        }
+    }
+    else if (head->id == head->next->id)
     {
         node *temp = head->next;
         head->dup = true;
         head->next = head->next->next;
         delete temp;
+        duplicate(head);
     }
-    duplicate(head->next);
+    else
+    {
+        duplicate(head->next);
+    }
 }
 
 bool list::innocent(node *head)
