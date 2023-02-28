@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "list.h"
+#include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
 
@@ -12,15 +13,15 @@ string dec(string input);
 
 int main(int argc, char *argv[])
 {
-    ArgumentManager an(argc, argv);
-    const string input = an.get("input");
-    const string output = an.get("output");
-    ifstream inputfile(input);
-    ofstream outfile(output);
+    // ArgumentManager an(argc, argv);
+    // const string input = an.get("input");
+    // const string output = an.get("output");
+    // ifstream inputfile(input);
+    // ofstream outfile(output);
 
     // delete when done
-    // ifstream inputfile("input2.txt");
-    // ofstream outfile("output.txt");
+    ifstream inputfile("input9.txt");
+    ofstream outfile("output.txt");
 
     string line;
     list bar;
