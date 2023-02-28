@@ -4,12 +4,30 @@ using namespace std;
 
 node *list::addtoend(node *head, string bar)
 {
-
     if (head == nullptr)
         return new node(bar);
     else
         head->next = addtoend(head->next, bar);
     return head;
+}
+
+void adde(node *head, char c){
+    if (head->next == nullptr){
+        node *tmp = new node();
+        tmp->c = c;
+        tmp->next = nullptr;
+        head->next = tmp;
+    }        
+    else
+        adde(head->next, c);
+}
+
+void list::addend(char c) {
+    if (isEmpty())
+        push(c);
+    else {
+        adde(head, c);
+    }
 }
 
 string list::print(node *head)
