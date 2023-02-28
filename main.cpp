@@ -4,12 +4,11 @@
 #include <string>
 #include <algorithm>
 #include "list.h"
-#include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
 
 string decode(string input);
-string dec(string input);
+// string dec(string input);
 
 int main(int argc, char *argv[])
 {
@@ -121,26 +120,26 @@ string decode (string input) {
 // }
 
 // DO NOT CALL THIS FUNCTION!!! CALL "decode()"!!!
-string dec(string input)
-{
-    list *stack = new list();
+// string dec(string input)
+// {
+//     list *stack = new list();
 
-    // finds "()"
-    int start, end = -1;
-    start = input.find_first_of('(');
-    end = input.find_last_of(')');
+//     // finds "()"
+//     int start, end = -1;
+//     start = input.find_first_of('(');
+//     end = input.find_last_of(')');
 
-    // checks if the string contains "()" if so, calls dec
-    if (start != -1 && end != -1)
-    {
-        input = input.substr(0, start) + dec(input.substr(start + 1, end - start - 1)) + input.substr(end + 1, input.length() - 1);
-    }
+//     // checks if the string contains "()" if so, calls dec
+//     if (start != -1 && end != -1)
+//     {
+//         input = input.substr(0, start) + dec(input.substr(start + 1, end - start - 1)) + input.substr(end + 1, input.length() - 1);
+//     }
 
-    // flips order in string
-    for (int i = 0; i < input.length(); i++)
-        stack->push(input[i]);
-    input = "";
-    while (!stack->isEmpty())
-        input += stack->pop();
-    return input;
-}
+//     // flips order in string
+//     for (int i = 0; i < input.length(); i++)
+//         stack->push(input[i]);
+//     input = "";
+//     while (!stack->isEmpty())
+//         input += stack->pop();
+//     return input;
+// }
