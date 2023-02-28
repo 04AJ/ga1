@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "list.h"
+#include "list.cpp"
 #include "ArgumentManager.h"
 using namespace std;
 
@@ -77,9 +78,6 @@ string decode (string input) {
     int openp = 0;
 
     for (int i = 0; i < size; i++) {
-        // empties line for new cycle
-        // while (!line->isEmpty())
-        //     line->pop();
         if (input[i] == '(')
                 openp ++;
         if (openp <= 0)
