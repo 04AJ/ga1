@@ -44,6 +44,7 @@ public:
     char pop();
     node *peek();
     bool isEmpty() { return head == nullptr; }
+    void addend(char c);
 };
 
 #endif
